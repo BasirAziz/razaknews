@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+  <link href="templates/base.css" rel="stylesheet">
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'base.css' %}">
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+</head>
+
+
+
+<body>
+  <header class="text-gray-400 bg-gray-200 body-font">
+    <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center pb-5">
+      <a class="flex title-font font-medium items-center text-white mb-4 md:mb-0">
+        <img src="{% static 'razaknewstextlogo.png' %}" alt="My image" width="200" height="200">
+        
+
+        
+      </a>
+      <nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-700	flex flex-wrap items-center text-base justify-center">
+        <p class="font-mono pr-3">Finance & Economics simplified   </p>
+        <a class="mr-5 text-black ">Local/Malaysia</a>
+        <a class="mr-5 text-black ">International</a>
+        <a class="mr-5 text-black ">Market Ideas</a>
+      </nav>
+      <button class="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0">Button
+        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+          <path d="M5 12h14M12 5l7 7-7 7"></path>
+        </svg>
+      </button>
+    </div>
+  </header>
+ 
+
+<div class="p-10">
+  <div class="bg-gray-300 w-auto max-w-5xl pt-10 float-left">
+    
+  </div>
+  
+  <div class="float-right">
+    <!-- Begin Bursa Malaysia Stock Watch Gadget -->
+    <iframe src="https://www.malaysiastock.biz/Mini-Market-Watch.aspx" width="300" height="500" frameborder="0" scrolling="no"></iframe>
+    <!-- End Bursa Malaysia Stock Watch Gadget -->
+    
+  
+  </div>
+
+</div>
+
+<div>
+  <ul class="list-group">
+    {% for new in news %}
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <a href="{{ new.url }}">{{ new.headline }}</a>
+      <span class="badge badge-primary badge-pill">{{ new.source }}</span>
+      <span class="badge badge-primary badge-pill">{{ new.timestamp }}</span>
+    </li>
+    {% endfor %}
+  </ul>
+
+
+</div>
+
+
+
+
+  
+
+
+  
+</body>
+</html>
+
+<div>
+  <div class="list-group overflow-hidden">
+    {% for new in news %}
+    <a href="{{ new.url }}" class="list-group-item list-group-item-action flex-column align-items-start active">
+      <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1">{{ new.source }}</h5>
+        <small>{{ new.timestamp }}</small>
+      </div>
+      <p class="mb-1">{{ new.headline }}</p>
+    </a>
+    {% endfor %}
+  </div>
+</div>
